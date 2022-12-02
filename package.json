@@ -1,0 +1,27 @@
+{
+  "name": "advent-of-code-2021-ts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jasmine": "^3.10.2",
+    "@types/node": "^16.11.11",
+    "@types/yargs-parser": "^20.2.1",
+    "jasmine": "^3.10.0",
+    "jasmine-spec-reporter": "^7.0.0",
+    "jasmine-ts": "^0.4.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "yargs-parser": "^21.0.0"
+  },
+  "scripts": {
+    "write-days": "node -e \"require('./scripts/write-days.js')()\"",
+    "write-test": "sh scripts/bin/write-test.sh",
+    "new-day": "sh scripts/bin/new-day.sh",
+    "copy-inputs": "node scripts/bin/copy-inputs.js",
+    "start": "ts-node index.ts",
+    "test": "jasmine-ts --config=jasmine.json"
+  }
+}
