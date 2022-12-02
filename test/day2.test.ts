@@ -14,12 +14,12 @@ describe("Day 2", () => {
     const res = part1(input); //?
     expect(res).toBeDefined();
   });
-  xit("Part 2 Example", () => {
+  it("Part 2 Example", () => {
     const { input, output } = readExample(2, 2);
     const res = part2(input); //?
     expect(res.toString()).toBe(output);
   });
-  xit("Part 2", () => {
+  it("Part 2", () => {
     const input = readPuzzleInput(2, 2);
     const res = part2(input); //?
     expect(res).toBeDefined();

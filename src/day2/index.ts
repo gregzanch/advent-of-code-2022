@@ -29,16 +29,28 @@ const LogicMap = {
     [Shape.SCISSORS]: Outcome.WIN,
     [Shape.PAPER]: Outcome.LOSE,
     [Shape.ROCK]: Outcome.DRAW,
+
+    [Outcome.LOSE]: Shape.SCISSORS,
+    [Outcome.WIN]: Shape.PAPER,
+    [Outcome.DRAW]: Shape.ROCK,
   },
   [Shape.PAPER]: {
     [Shape.ROCK]: Outcome.WIN,
     [Shape.SCISSORS]: Outcome.LOSE,
     [Shape.PAPER]: Outcome.DRAW,
+
+    [Outcome.LOSE]: Shape.ROCK,
+    [Outcome.WIN]: Shape.SCISSORS,
+    [Outcome.DRAW]: Shape.PAPER,
   },
   [Shape.SCISSORS]: {
     [Shape.PAPER]: Outcome.WIN,
     [Shape.ROCK]: Outcome.LOSE,
     [Shape.SCISSORS]: Outcome.DRAW,
+
+    [Outcome.LOSE]: Shape.PAPER,
+    [Outcome.WIN]: Shape.ROCK,
+    [Outcome.DRAW]: Shape.SCISSORS,
   },
 };
 
@@ -69,18 +81,26 @@ export function part1(input: string): any {
   const scores = guide.map(getScore);
   return scores.reduce((a, b) => a + b);
 }
+
+const GuideMap2 = {
+  X: Outcome.LOSE,
+  Y: Outcome.DRAW,
+  Z: Outcome.WIN,
+};
+
+function getScore2(round: [string, string]): number {
+  const opponent = GuideMap[round[0]];
+  const outcome = GuideMap2[round[1]];
+  const playedShape = LogicMap[opponent][outcome];
+  const outcomeValue = OutcomeValueMap[outcome];
+  const shapeValue = ShapeValueMap[playedShape];
+  return shapeValue + outcomeValue;
+}
+
 export function part2(input: string): any {
-  const sumCalories = (elf) => {
-    return elf
-      .split("\n")
-      .map(Number)
-      .reduce((a, b) => a + b);
-  };
-  const calories = input.split("\n\n").map(sumCalories);
-  return calories
-    .sort((a, b) => b - a)
-    .slice(0, 3)
-    .reduce((a, b) => a + b);
+  const guide = getGuide(input);
+  const scores = guide.map(getScore2);
+  return scores.reduce((a, b) => a + b);
 }
 
 export default {
