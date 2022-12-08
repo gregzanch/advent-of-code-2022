@@ -16,6 +16,8 @@ export function union<T>(set1: Set<T>, set2: Set<T>): Set<T> {
   return new Set([...set1, ...set2]);
 }
 
+
+
 export const getIndex = (i: string | number) => (x: any) => x[i];
 export const ascending = <T extends number | string>(a: T, b: T) => (a < b ? -1 : +1);
 export const descending = <T extends number | string>(a: T, b: T) => (a < b ? +1 : -1);
